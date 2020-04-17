@@ -10,9 +10,10 @@
   "license": "GPL-3.0-or-later",
   "author": "Christian Emmer",
   "files": [
+    "index.js",
     "lib"
   ],
-  "main": "lib/index.js",
+  "main": "index.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/emmercm/swlw-rss.git"

@@ -1,5 +1,5 @@
 [build]
-command = "npm test && node lib/index.js"
+command = "npm test && node index"
 publish = "build/"
 
 [build.environment]
