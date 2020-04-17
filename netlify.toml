@@ -3,5 +3,4 @@ command = "npm test && node index"
 publish = "build/"
 
 [build.environment]
-NODE_ENV = "production"
 TZ = "America/Detroit"
