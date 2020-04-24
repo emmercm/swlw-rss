@@ -5,12 +5,50 @@
   <title>{{{ title }}}</title>
   <meta name="description" content="{{{ description }}}">
   <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta name="referrer" content="unsafe-url">
+
+  <link href="https://stackpath.bootstrapcdn.com/bootswatch/4.4.1/lumen/bootstrap.min.css" rel="stylesheet" integrity="sha384-715VMUUaOfZR3/rWXZJ9agJ/udwSXGEigabzUbJm2NR4/v5wpDy8c14yedZN6NL7" crossorigin="anonymous">
+  <script src="https://kit.fontawesome.com/1398e76e80.js" crossorigin="anonymous"></script>
 </head>
+
 <body>
-<ul>
-  {{#each files}}
-    <li><a href="{{{ this }}}">{{{ this }}}</a></li>
-  {{/each}}
-</ul>
+<nav class="navbar navbar-expand navbar-dark bg-primary">
+  <div class="container d-flex justify-content-between">
+    <span class="navbar-brand">
+      <i class="far fa-snowflake"></i>&nbsp;&nbsp;{{{ title }}}
+    </span>
+    <div class="collapse navbar-collapse">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item active">
+          <a class="nav-link px-3" href="latest.rss">
+            <i class="fas fa-rss"></i>&nbsp;&nbsp;Latest Issue
+          </a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link px-3" href="issues.rss">
+            <i class="fas fa-rss"></i>&nbsp;&nbsp;All Issues
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<main class="container py-4" role="main">
+  <h2>{{{ description }}}</h2>
+  <p>
+    <ul class="fa-ul">
+      {{#each files}}
+        <li>
+          <span class="fa-li"><i class="fas fa-rss"></i></span>
+          <a href="{{{ this }}}">{{{ this }}}</a>
+        </li>
+      {{/each}}
+    </ul>
+  </p>
+</main>
+
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js" integrity="sha384-6khuMg9gaYr5AxOqhkVIODVIvm9ynTT5J4V1cfthmT+emCG6yVmEZsRHdxlotUnm" crossorigin="anonymous"></script>
 </body>
 </html>
