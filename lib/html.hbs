@@ -30,10 +30,6 @@
         column-count: 5;
       }
     }
-
-    li:not(:first-child) {
-      margin-top: 5px;
-    }
   </style>
 </head>
 
@@ -69,7 +65,7 @@
       <a href="issues.rss">All Issues</a>
       - a feed of all issues on this page
     </li>
-    <li>
+    <li class="mt-2">
       <span class="fa-li"><i class="fas fa-sparkles"></i></span>
       <a href="latest.rss">Latest Issue</a>
       - points to the latest issue, currently: {{{ issues.0.title }}}
@@ -78,7 +74,7 @@
   <hr>
   <ul class="fa-ul responsive">
     {{#each issues}}
-      <li>
+      <li class="mb-2">
         <span class="fa-li"><i class="fas fa-rss"></i></span>
         <a href="{{{ filename }}}">{{{ title }}}</a>
       </li>
