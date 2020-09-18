@@ -19,7 +19,7 @@ const main = async () => {
   const latestPosts = await getIssue(issues[0]);
   writeIssueRss(issues[0], latestPosts, 'latest.rss');
 
-  async.eachLimit(issues.slice(0, config.maxIssues), 5, async (issue) => {
+  await async.eachLimit(issues.slice(0, config.maxIssues), 5, async (issue) => {
     const posts = await getIssue(issue);
     writeIssueRss(issue, posts);
   }, (err) => {

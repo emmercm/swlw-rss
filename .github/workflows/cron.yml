@@ -3,7 +3,7 @@ name: Build Cron Schedule
 on:
   schedule:
     # A few minutes before the hour mark on Fridays (GMT)
-    - cron: '55 * * * 5'
+    - cron: '50 10-22 * * 5'
 
 jobs:
   build:
