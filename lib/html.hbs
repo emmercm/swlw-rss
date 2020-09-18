@@ -9,8 +9,32 @@
 
   <meta name="referrer" content="unsafe-url">
 
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/lumen/bootstrap.min.css" integrity="sha384-GzaBcW6yPIfhF+6VpKMjxbTx6tvR/yRd/yJub90CqoIn2Tz4rRXlSpTFYMKHCifX" crossorigin="anonymous">
+  <link rel="stylesheet"
+        href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/lumen/bootstrap.min.css"
+        integrity="sha384-GzaBcW6yPIfhF+6VpKMjxbTx6tvR/yRd/yJub90CqoIn2Tz4rRXlSpTFYMKHCifX"
+        crossorigin="anonymous">
   <script src="https://kit.fontawesome.com/1398e76e80.js" crossorigin="anonymous"></script>
+  <style>
+    ul.responsive {
+      column-count: 3;
+    }
+
+    @media (min-width: 768px) {
+      ul.responsive {
+        column-count: 4;
+      }
+    }
+
+    @media (min-width: 992px) {
+      ul.responsive {
+        column-count: 5;
+      }
+    }
+
+    li:not(:first-child) {
+      margin-top: 5px;
+    }
+  </style>
 </head>
 
 <body>
@@ -22,13 +46,13 @@
     <div class="collapse navbar-collapse">
       <ul class="navbar-nav ml-auto">
         <li class="nav-item active">
-          <a class="nav-link px-3" href="latest.rss">
-            <i class="fas fa-rss"></i>&nbsp;&nbsp;Latest Issue
+          <a class="nav-link px-3" href="issues.rss">
+            <i class="fas fa-th-list"></i>&nbsp;&nbsp;All Issues
           </a>
         </li>
         <li class="nav-item active">
-          <a class="nav-link px-3" href="issues.rss">
-            <i class="fas fa-rss"></i>&nbsp;&nbsp;All Issues
+          <a class="nav-link px-3" href="latest.rss">
+            <i class="fas fa-sparkles"></i>&nbsp;&nbsp;Latest Issue
           </a>
         </li>
       </ul>
@@ -37,18 +61,34 @@
 </nav>
 <main class="container py-4" role="main">
   <h2>{{{ description }}}</h2>
+
   <p>
-    <ul class="fa-ul">
-      {{#each files}}
-        <li>
-          <span class="fa-li"><i class="fas fa-rss"></i></span>
-          <a href="{{{ this }}}">{{{ this }}}</a>
-        </li>
-      {{/each}}
-    </ul>
+  <ul class="fa-ul">
+    <li>
+      <span class="fa-li"><i class="fas fa-th-list"></i></span>
+      <a href="issues.rss">All Issues</a>
+      - a feed of all issues on this page
+    </li>
+    <li>
+      <span class="fa-li"><i class="fas fa-sparkles"></i></span>
+      <a href="latest.rss">Latest Issue</a>
+      - points to the latest issue, currently: {{{ issues.0.title }}}
+    </li>
+  </ul>
+  <hr>
+  <ul class="fa-ul responsive">
+    {{#each issues}}
+      <li>
+        <span class="fa-li"><i class="fas fa-rss"></i></span>
+        <a href="{{{ filename }}}">{{{ title }}}</a>
+      </li>
+    {{/each}}
+  </ul>
   </p>
 </main>
 
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+        crossorigin="anonymous"></script>
 </body>
 </html>
