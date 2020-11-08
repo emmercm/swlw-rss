@@ -1,6 +1,7 @@
 'use strict';
 
 const async = require('async');
+const urlExist = require('url-exist');
 
 const { getIssues, getIssue } = require('./lib/swlw-fetch');
 const { writeIssuesRss, writeIssueRss } = require('./lib/swlw-rss');
@@ -13,6 +14,15 @@ const { generateHtmlDirectory } = require('./lib/html');
  */
 const main = async () => {
   const issues = await getIssues();
+
+  // If this is a Netlify build, short circuit if we don't need to build
+  if (process.env.NETLIFY) {
+    const exists = await urlExist(`${process.env.URL}/${issues[0].filename}`);
+    if (exists) {
+      return;
+    }
+  }
+
   writeIssuesRss(issues);
 
   const latestPosts = await getIssue(issues[0]);
