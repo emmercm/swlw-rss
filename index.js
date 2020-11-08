@@ -19,7 +19,7 @@ const main = async () => {
   const issues = await getIssues();
 
   // If this is a Netlify build, short circuit if we don't need to build
-  if (process.env.NETLIFY) {
+  if (process.env.NETLIFY && process.env.CONTEXT === 'production') {
     const exists = await urlExist(`${process.env.URL}/${issues[0].filename}`);
     if (exists) {
       // TODO: find a better way to not cause a build failure due to missing output
