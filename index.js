@@ -19,6 +19,7 @@ const main = async () => {
   if (process.env.NETLIFY) {
     const exists = await urlExist(`${process.env.URL}/${issues[0].filename}`);
     if (exists) {
+      // TODO: find a better way to not cause a build failure due to missing output
       return;
     }
   }
