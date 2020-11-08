@@ -1,5 +1,8 @@
-#!/usr/bin/env python2
+#!/usr/bin/env python3
+
+import re
 from calibre.web.feeds.news import BasicNewsRecipe
+
 class SoftwareLeadWeekly(BasicNewsRecipe):
     title            = 'Software Lead Weekly'
     description      = 'A weekly email for busy people who care about people, culture and leadership.'
@@ -17,6 +20,5 @@ class SoftwareLeadWeekly(BasicNewsRecipe):
 
         from contextlib import closing
         with closing(self.browser.open(self.feeds[0])) as r:
-            feed = r.read()
-            import re
+            feed = r.read().decode('utf-8')
             self.title = re.search('<title>(<!\[CDATA\[)?(.+?)(]]>)?</title>', feed, re.IGNORECASE).group(2)
