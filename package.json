@@ -27,13 +27,14 @@
     "cheerio": "^1.0.0-rc.3",
     "handlebars": "^4.7.6",
     "luxon": "^1.25.0",
-    "make-fetch-happen": "^8.0.4",
-    "rss": "^1.2.2"
+    "make-fetch-happen": "^8.0.10",
+    "rss": "^1.2.2",
+    "url-exist": "^2.0.2"
   },
   "devDependencies": {
-    "eslint": "^6.8.0",
-    "eslint-config-airbnb-base": "^14.1.0",
-    "eslint-plugin-import": "^2.20.2"
+    "eslint": "^7.13.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.22.1"
   },
   "engines": {}
 }

@@ -2,8 +2,8 @@ name: Build Cron Schedule
 
 on:
   schedule:
-    # A few minutes before the hour mark on Fridays (GMT)
-    - cron: '50 10-22 * * 5'
+    # Every ten minutes on Fridays
+    - cron: '*/10 * * * 5'
 
 jobs:
   build:

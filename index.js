@@ -3,6 +3,7 @@
 const fs = require('fs');
 
 const async = require('async');
+const urlExist = require('url-exist');
 
 const config = require('./lib/config');
 const { getIssues, getIssue } = require('./lib/swlw-fetch');
@@ -16,6 +17,16 @@ const { generateHtmlDirectory } = require('./lib/html');
  */
 const main = async () => {
   const issues = await getIssues();
+
+  // If this is a Netlify build, short circuit if we don't need to build
+  if (process.env.NETLIFY && process.env.INCOMING_HOOK_URL) {
+    const exists = await urlExist(`${process.env.URL}/${issues[0].filename}`);
+    if (exists) {
+      // TODO: find a better way to not cause a build failure due to missing output
+      return;
+    }
+  }
+
   writeIssuesRss(issues);
 
   const latestPosts = await getIssue(issues[0]);
