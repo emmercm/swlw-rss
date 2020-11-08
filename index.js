@@ -1,7 +1,10 @@
 'use strict';
 
+const fs = require('fs');
+
 const async = require('async');
 
+const config = require('./lib/config');
 const { getIssues, getIssue } = require('./lib/swlw-fetch');
 const { writeIssuesRss, writeIssueRss } = require('./lib/swlw-rss');
 const { generateHtmlDirectory } = require('./lib/html');
@@ -25,6 +28,9 @@ const main = async () => {
     if (err) {
       throw new Error(err);
     }
+
+    const calibreRecipe = 'calibre.recipe';
+    fs.copyFileSync(calibreRecipe, `${config.outputDir}/${calibreRecipe}`);
 
     generateHtmlDirectory(issues);
   });
