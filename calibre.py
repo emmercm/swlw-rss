@@ -8,7 +8,7 @@ class SoftwareLeadWeekly(BasicNewsRecipe):
     description      = 'A weekly email for busy people who care about people, culture and leadership.'
     __author__       = 'Christian Emmer'
     language         = 'en'
-    oldest_article   = 7
+    oldest_article   = 365
     publication_type = 'blog'
     timefmt          = ' [%d %B %Y]'
     feeds            = ['https://swlw-rss.netlify.app/latest.rss']
