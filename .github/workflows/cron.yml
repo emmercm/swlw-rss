@@ -3,7 +3,7 @@ name: Build Cron Schedule
 on:
   schedule:
     # Every ten minutes on Fridays
-    - cron: '*/10 * * * 5'
+    - cron: '0 * * * 5'
 
 jobs:
   build:
