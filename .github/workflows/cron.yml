@@ -4,6 +4,7 @@ on:
   schedule:
     # Every ten minutes on Fridays
     - cron: '0 * * * 5'
+  workflow_dispatch:
 
 jobs:
   build:
